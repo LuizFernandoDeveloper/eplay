@@ -1,10 +1,21 @@
 import { Link } from 'react-router-dom'
 
-import { HeaderBar, LinkCart, LinkItem, Links, Logo } from './styles'
-import logo from '../../assets/svgs/logo.svg'
-import car from '../../assets/svgs/carrinho.svg'
+import { HeaderBar, CartButton, LinkItem, Links, Logo } from './styles'
+import logo from '../../assets/logo/logo.svg'
+import car from '../../assets/icon/carrinho.svg'
+
+import { isOpen } from '../../store/reducers/Cart'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 
 const Header = () => {
+  const dispatch = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.cart)
+
+  const openCart = () => {
+    dispatch(isOpen())
+  }
+
   return (
     <HeaderBar>
       <div>
@@ -25,10 +36,10 @@ const Header = () => {
           </Links>
         </nav>
       </div>
-      <LinkCart href="#">
-        0 - produto(s)
+      <CartButton onClick={openCart}>
+        {items.length} - produto(s)
         <img src={car} alt="Carrinho de compras" />
-      </LinkCart>
+      </CartButton>
     </HeaderBar>
   )
 }

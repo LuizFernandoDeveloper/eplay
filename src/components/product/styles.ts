@@ -1,13 +1,24 @@
 import styled from 'styled-components'
 import { Colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
+import { Link } from 'react-router-dom'
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(Link)`
   background-color: ${Colors.gray};
   border-radius: 8px;
   padding: 8px;
   display: inline-block;
   position: relative;
+  text-decoration: none;
+  color: ${Colors.white};
+  dispĺay: block;
+
+  img {
+    dispay: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
 
   ${TagContainer} {
     margin-right: 8px;

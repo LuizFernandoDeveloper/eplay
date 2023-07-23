@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { PropsProductList } from '.'
-import { Colors } from '../../styles'
+import { Colors, breakPoints } from '../../styles'
 import { CardContainer } from '../product/styles'
 export const ProductListContainer = styled.section<
-  Omit<PropsProductList, 'title' | 'games'>
+  Omit<PropsProductList, 'title' | 'games' | 'id'>
 >`
   padding: 32px 0px;
   background-color: ${(props) =>
@@ -22,5 +22,14 @@ export const ListProducts = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 24px;
+  row-gap: 24px;
   margin-top: 40px;
+
+  @media (max-width: ${breakPoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: ${breakPoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
 `

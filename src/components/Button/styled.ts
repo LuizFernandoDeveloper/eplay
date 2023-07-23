@@ -4,9 +4,11 @@ import { PropsButton } from '.'
 import { Link } from 'react-router-dom'
 
 export const ButtonContainer = styled.button<PropsButton>`
-  border: 2px solid ${Colors.white};
+  border: 2px solid
+    ${(props) => (props.variant === 'primary' ? Colors.green : Colors.white)};
   color: ${Colors.white};
-  background-color: transparent;
+  background-color: ${(props) =>
+    props.variant === 'primary' ? Colors.green : 'transparent'};
   font-size: 16px;
   font-weight: bold;
   padding: 8px 16px;

@@ -1,4 +1,3 @@
-import { DescriptionCard } from './../../components/product/styles'
 class Game {
   public id: number
   public category: string

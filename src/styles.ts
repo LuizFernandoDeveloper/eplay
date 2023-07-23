@@ -5,7 +5,13 @@ export const Colors = {
   white: '#EEEEEE',
   black: '#111',
   green: '#10AC84',
-  lightGRay: '#A3A3A3'
+  lightGRay: '#A3A3A3',
+  allBlack: '#000'
+}
+
+export const breakPoints = {
+  desktop: '1024px',
+  tablet: '768px'
 }
 
 export const GlobalCss = createGlobalStyle`
@@ -27,5 +33,9 @@ export const GlobalCss = createGlobalStyle`
     max-width: 1024px;
     width: 100%;
     margin: 0 auto;
+
+    @media (max-width: ${breakPoints.desktop}){
+      max-width: 80%
+    }
   }
 `
