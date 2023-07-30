@@ -1,4 +1,4 @@
-import { useGetFeatureGameQuery } from '../../services/api'
+import { useGetFeaturedGameQuery } from '../../services/api'
 
 import { BannerImage, Preice, Title } from './styles'
 import Tag from '../Tag'
@@ -6,7 +6,7 @@ import Button from '../Button'
 import { formatPrice } from '../ProductList'
 
 const Banner = () => {
-  const { data: game } = useGetFeatureGameQuery()
+  const { data: game } = useGetFeaturedGameQuery()
 
   if (!game) {
     return <h3>..Carregando</h3>

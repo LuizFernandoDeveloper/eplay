@@ -4,7 +4,7 @@ import {
   useGetSportGamesQuery,
   useGetSimulationGamesQuery,
   useGetFightGamesQuery,
-  useGetRPGGamesQuery
+  useGetRpgGamesQuery
 } from '../../services/api'
 
 const Categories = () => {
@@ -12,7 +12,7 @@ const Categories = () => {
   const { data: sportGames } = useGetSportGamesQuery()
   const { data: simulatiomGames } = useGetSimulationGamesQuery()
   const { data: fightGames } = useGetFightGamesQuery()
-  const { data: rpgGames } = useGetRPGGamesQuery()
+  const { data: rpgGames } = useGetRpgGamesQuery()
 
   if (actionGames && sportGames && simulatiomGames && fightGames && rpgGames) {
     return (

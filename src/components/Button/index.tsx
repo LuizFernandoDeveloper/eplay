@@ -1,12 +1,13 @@
-import { ButtonContainer, ButtonLink } from './styled'
+import * as S from './styled'
 
-export type PropsButton = {
-  type: 'button' | 'link'
+export type Props = {
+  type: 'button' | 'link' | 'submit'
   title: string
   to?: string
   onClick?: () => void
   children: string
   variant?: 'primary' | 'secondary'
+  disabled?: boolean
 }
 
 const Button = ({
@@ -15,24 +16,29 @@ const Button = ({
   to,
   onClick,
   children,
+  disabled,
   variant = 'primary'
-}: PropsButton) => {
-  if (type === 'button') {
+}: Props) => {
+  if (type === 'button' || type === 'submit') {
     return (
-      <ButtonContainer
+      <S.ButtonContainer
         variant={variant}
-        type="button"
+        type={type}
         title={title}
         onClick={onClick}
+        disabled={disabled}
       >
         {children}
-      </ButtonContainer>
+      </S.ButtonContainer>
     )
   }
+
   return (
-    <ButtonLink to={to as string} title={title}>
-      {children}
-    </ButtonLink>
+    <>
+      <S.ButtonLink to={to as string} title={title}>
+        {children}
+      </S.ButtonLink>
+    </>
   )
 }
 
