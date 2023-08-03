@@ -1,22 +1,24 @@
+import { parseToBrl } from '../../utils'
 import { Game } from '../../views/Home'
+import Loader from '../Loader'
 import Product from '../product'
 import { ListProducts, ProductListContainer } from './styles'
 
 export type PropsProductList = {
   title: string
   background: 'gray' | 'black'
-  games: Game[]
+  games?: Game[]
   id: string
+  isLoading: boolean
 }
 
-export const formatPrice = (price = 0) => {
-  return new Intl.NumberFormat('pt-Br', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(price)
-}
-
-const ProductList = ({ title, background, games, id }: PropsProductList) => {
+const ProductList = ({
+  title,
+  background,
+  games,
+  id,
+  isLoading
+}: PropsProductList) => {
   const getGameTags = (game: Game) => {
     const tags = []
 
@@ -29,10 +31,14 @@ const ProductList = ({ title, background, games, id }: PropsProductList) => {
     }
 
     if (game.prices.current) {
-      tags.push(formatPrice(game.prices.current))
+      tags.push(parseToBrl(game.prices.current))
     }
 
     return tags
+  }
+
+  if (isLoading) {
+    return <Loader></Loader>
   }
 
   return (
@@ -40,19 +46,20 @@ const ProductList = ({ title, background, games, id }: PropsProductList) => {
       <div className="container">
         <h2>{title}</h2>
         <ListProducts>
-          {games.map((game) => (
-            <li key={game.id}>
-              <Product
-                id={game.id}
-                category={game.details.category}
-                description={game.description}
-                image={game.media.thumbnail}
-                infos={getGameTags(game)}
-                system={game.details.system}
-                title={game.name}
-              />
-            </li>
-          ))}
+          {games &&
+            games.map((game) => (
+              <li key={game.id}>
+                <Product
+                  id={game.id}
+                  category={game.details.category}
+                  description={game.description}
+                  image={game.media.thumbnail}
+                  infos={getGameTags(game)}
+                  system={game.details.system}
+                  title={game.name}
+                />
+              </li>
+            ))}
         </ListProducts>
       </div>
     </ProductListContainer>

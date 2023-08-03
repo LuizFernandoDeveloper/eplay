@@ -25,7 +25,7 @@ type PurchasePayload = {
       }
       name?: string
       number?: string
-      expires?: {
+      expipres?: {
         month: number
         year: number
       }
@@ -35,16 +35,12 @@ type PurchasePayload = {
   }
 }
 
-type PurchaseResponse = {
-  orderId: string
-}
-
 const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://fake-api-tau.vercel.app/api/eplay'
   }),
   endpoints: (builder) => ({
-    getFeaturedGame: builder.query<Game, void>({
+    getFeatureGame: builder.query<Game, void>({
       query: () => 'destaque'
     }),
     getOnSale: builder.query<Game[], void>({
@@ -71,7 +67,7 @@ const api = createApi({
     getGame: builder.query<Game, string>({
       query: (id) => `jogos/${id}`
     }),
-    purchase: builder.mutation<PurchaseResponse, PurchasePayload>({
+    purchase: builder.mutation<any, PurchasePayload>({
       query: (body) => ({
         url: 'checkout',
         method: 'POST',
@@ -82,14 +78,14 @@ const api = createApi({
 })
 
 export const {
-  useGetFeaturedGameQuery,
-  useGetSoonQuery,
+  useGetFeatureGameQuery,
   useGetOnSaleQuery,
+  useGetSoonQuery,
   useGetActionGamesQuery,
-  useGetSportGamesQuery,
-  useGetSimulationGamesQuery,
   useGetFightGamesQuery,
   useGetRpgGamesQuery,
+  useGetSimulationGamesQuery,
+  useGetSportGamesQuery,
   useGetGameQuery,
   usePurchaseMutation
 } = api

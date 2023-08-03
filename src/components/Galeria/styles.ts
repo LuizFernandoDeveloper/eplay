@@ -23,6 +23,8 @@ export const Action = styled.div`
 export const Item = styled.li`
   position: relative;
   overflow: hidden;
+  cursor: zoom-in;
+
   > img {
     border: 2px solid ${Colors.white};
     border-radius: 8px;
@@ -60,6 +62,7 @@ export const Modal = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.95);
+    cursor: pointer;
   }
 `
 export const ModalContent = styled.div`
@@ -75,6 +78,12 @@ export const ModalContent = styled.div`
     h4 {
       font-size: 18px;
       font-weight: bold;
+    }
+
+    > img {
+      height: 16px;
+      width: 16px;
+      cursor: pointer;
     }
   }
 

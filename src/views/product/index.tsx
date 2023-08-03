@@ -1,24 +1,31 @@
 import { useParams } from 'react-router-dom'
+
 import Hero from '../../components/Hero'
+import Loader from '../../components/Loader'
 import Section from '../../components/Section'
 import Gallery from '../../components/Galeria'
 
 import { useGetGameQuery } from '../../services/api'
 
+type GameParams = {
+  id: string
+}
+
 const Product = () => {
-  const { id } = useParams()
+  const { id } = useParams() as GameParams // usado no lugar de if de verificação.
 
   let idChecked: string
   idChecked = ''
 
   if (id) {
+    // GamesParams usado no lugar desse if
     idChecked = id
   }
 
   const { data: game } = useGetGameQuery(idChecked)
 
   if (!game) {
-    return <h3>Carregando...</h3>
+    return <Loader></Loader>
   }
 
   return (

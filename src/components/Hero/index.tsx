@@ -2,9 +2,9 @@ import { Banner, Infos } from './styles'
 import Tag from '../Tag'
 import Button from '../Button'
 import { Game } from '../../views/Home'
-import { formatPrice } from '../ProductList'
 import { useDispatch } from 'react-redux'
 import { add, isOpen } from '../../store/reducers/Cart'
+import { parseToBrl } from '../../utils'
 
 type PropsHero = {
   game: Game
@@ -29,10 +29,10 @@ const Hero = ({ game }: PropsHero) => {
           <h2>{game.name}</h2>
           <p>
             {game.prices.discount && (
-              <span>De {formatPrice(game.prices.old)}</span>
+              <span>De {parseToBrl(game.prices.old)}</span>
             )}
             {game.prices.current && (
-              <>Por ${formatPrice(game.prices.current)} </>
+              <>Por ${parseToBrl(game.prices.current)} </>
             )}
           </p>
           {game.prices.current && (

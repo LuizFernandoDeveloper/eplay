@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Colors } from '../../styles'
+import { Colors, breakPoints } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 import { Link } from 'react-router-dom'
 
@@ -12,7 +12,15 @@ export const CardContainer = styled(Link)`
   text-decoration: none;
   color: ${Colors.white};
   dispĺay: block;
+  height: 100%;
 
+  @media (max-width: ${breakPoints.desktop}) {
+    width: 100%;
+  }
+  @media (max-width: ${breakPoints.tablet}) {
+    width: 90%;
+    margin: 0 5%;
+  }
   img {
     dispay: block;
     width: 100%;

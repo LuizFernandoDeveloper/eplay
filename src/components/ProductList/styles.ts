@@ -3,7 +3,7 @@ import { PropsProductList } from '.'
 import { Colors, breakPoints } from '../../styles'
 import { CardContainer } from '../product/styles'
 export const ProductListContainer = styled.section<
-  Omit<PropsProductList, 'title' | 'games' | 'id'>
+  Omit<PropsProductList, 'title' | 'games' | 'id' | 'isLoading'>
 >`
   padding: 32px 0px;
   background-color: ${(props) =>

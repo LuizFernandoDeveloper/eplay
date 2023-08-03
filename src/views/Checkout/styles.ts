@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakPoints as breakpoints, Colors as colors } from '../../styles'
+import { breakPoints as breakpoints, Colors } from '../../styles'
 
 type InputGroupProps = {
   maxWidth?: string
@@ -16,14 +16,14 @@ type TabButtonProps = {
 export const Row = styled.div<RowProps>`
   display: flex;
   column-gap: 24px;
-  margin-top: ${(props) => props.marginTop || '0'};
   align-items: flex-end;
+
+  margin-top: ${(props) => props.marginTop || '0'};
 
   @media (max-width: ${breakpoints.tablet}) {
     display: block;
   }
 `
-
 export const InputGroup = styled.div<InputGroupProps>`
   flex: auto;
 
@@ -37,8 +37,8 @@ export const InputGroup = styled.div<InputGroupProps>`
 
   input,
   select {
-    background-color: ${colors.white};
-    border: 1px solid ${colors.white};
+    background-color: ${Colors.white};
+    border: 1px solid ${Colors.white};
     height: 32px;
     padding: 0 8px;
     width: 100%;
@@ -57,9 +57,9 @@ export const TabButton = styled.button<TabButtonProps>`
   border-radius: 8px;
   font-size: 14px;
   font-weight: bold;
-  color: ${colors.white};
+  color: ${Colors.white};
   background-color: ${(props) =>
-    props.isActive ? colors.green : colors.black};
+    props.isActive ? Colors.green : Colors.lightGRay};
   height: 32px;
   border: none;
   margin-right: 16px;

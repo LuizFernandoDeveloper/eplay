@@ -1,15 +1,17 @@
-import { useGetFeaturedGameQuery } from '../../services/api'
+import { useGetFeatureGameQuery } from '../../services/api'
 
-import { BannerImage, Preice, Title } from './styles'
 import Tag from '../Tag'
 import Button from '../Button'
-import { formatPrice } from '../ProductList'
+
+import { BannerImage, Preice, Title } from './styles'
+import { parseToBrl } from '../../utils'
+import Loader from '../Loader'
 
 const Banner = () => {
-  const { data: game } = useGetFeaturedGameQuery()
+  const { data: game } = useGetFeatureGameQuery()
 
   if (!game) {
-    return <h3>..Carregando</h3>
+    return <Loader></Loader>
   }
   return (
     <BannerImage style={{ backgroundImage: `url(${game.media.cover})` }}>
@@ -18,8 +20,8 @@ const Banner = () => {
         <div>
           <Title>{game.name}</Title>
           <Preice>
-            De R$ <span>{formatPrice(game.prices.old)}</span> <br />
-            por apenas {formatPrice(game.prices.current)}
+            De R$ <span>{parseToBrl(game.prices.old)}</span> <br />
+            por apenas {parseToBrl(game.prices.current)}
           </Preice>
         </div>
         <Button
