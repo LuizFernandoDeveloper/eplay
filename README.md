@@ -22,6 +22,10 @@
 
 ### Está é uma aplicação Web de um E-commerce simples.
 
+#### GIF ilustrativa da aplicação:
+
+![Gif applicação ](./readme-media/dd.png)
+
 # [Figma da aplicação ](https://www.figma.com/file/FiFpwvwwHX0rCbrXatjMg4/EPLAY?type=design&node-id=0-1&mode=design&t=bK54pnPZrry2oReI-0)
 
 # [Veja a aplicação  na vercel](https://eplay-six.vercel.app/)
